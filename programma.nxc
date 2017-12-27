@@ -1,9 +1,49 @@
+/*
+Feadback:
+2 mottoren in hetmidden
+
+
+
+
+*/
+
+//Variablen zwart
+int zwart = 35;
+int wit = 60;
+
+
+
+void draai(int pwr){
+  OnFwd(OUT_C, pwr);
+  OnFwd(OUT_A, -pwr);
+}
+
+
 task main() {
+    //Initialiseer sensoren
     SetSensorLowspeed(IN_2);
     SetSensorLowspeed(IN_3);
 
+    //Initialiseer licht sensoren
+    SetSensorLight(IN_1);
+    SetSensorLight(IN_4);
 
-  
+    //loop
+    while (true) {
+      if (Sensor(IN_1) <= zwart) {
+        OnFwd(OUT_AC,-15);
+      }
+
+      if(Sensor(IN_4) <= zwart) {
+            draai(40);
+            until(Sensor(IN_1) <= zwart);
+      }
+    }
+
+
+
+
+
 
 
 }
