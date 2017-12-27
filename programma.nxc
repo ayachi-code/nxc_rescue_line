@@ -1,5 +1,9 @@
 task main() {
-  SetSensorLowspeed(IN_2);
+    SetSensorLowspeed(IN_2);
+    SetSensorLowspeed(IN_3);
+
+
+  
 
 
 }
